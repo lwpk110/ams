@@ -1,0 +1,20 @@
+plugins {
+    id "com.moowork.node" version "1.1.1"
+}
+
+apply plugin: 'java'
+apply plugin: 'com.moowork.node'
+
+jar {
+    from 'dist'
+    eachFile {
+        details -> details.path = details.path.endsWith('.html') ? 'templates/admin/' + details.path : 'static/' + details.path
+    }
+    includeEmptyDirs = false
+}
+
+task clientBuild(type: YarnTask) {
+    args = ['run', 'build']
+}
+
+jar.dependsOn clientBuild

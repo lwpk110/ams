@@ -1,0 +1,24 @@
+description = 'xinbee-ams-admin-manager'
+
+dependencies {
+    compile project(':xinbee-ams-core')
+    compile project(':xinbee-ams-html')
+
+    compile "org.springframework:spring-webmvc"
+    compile "com.fasterxml.jackson.core:jackson-databind"
+    compile "javax.servlet:javax.servlet-api"
+    compile "commons-io:commons-io"
+    compile "org.apache.commons:commons-lang3"
+    compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.8.3'
+    compile "com.alibaba:fastjson:${fastjsonVersion}"
+
+    testCompile "org.springframework:spring-test"
+    testCompile "org.mockito:mockito-core"
+    testCompile "org.hamcrest:hamcrest-all"
+    integrationTestCompile "org.dbunit:dbunit:${dbunitVersion}"
+    integrationTestCompile "com.github.springtestdbunit:spring-test-dbunit:${springtestdbunitVersion}"
+    integrationTestCompile "com.jayway.jsonpath:json-path:${jsonPathVersion}"
+    integrationTestCompile "com.jayway.jsonpath:json-path-assert:${jsonPathVersion}"
+    integrationTestCompile "javax.servlet:jstl"
+    integrationTestCompile "org.glassfish:javax.el:${elVersion}"
+}

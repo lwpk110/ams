@@ -1,0 +1,4 @@
+rootProject.name = 'xinbee-ams'
+
+include 'xinbee-ams-core', 'xinbee-ams-admin-manager', 'xinbee-ams-webapp', 'xinbee-ams-html'
+

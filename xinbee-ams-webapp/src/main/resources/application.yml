@@ -1,0 +1,54 @@
+server:
+  port: 8086
+
+logging:
+  path: logs/
+  level:
+    root: INFO
+spring:
+  profiles.active: dev
+  messages:
+    basename: cn/tendata/mdcs/messages,cn/tendata/mdcs/web/messages,i18n/admin/ValidationMessages
+  jpa:
+    open-in-view: true
+    show-sql: true
+    properties:
+      jadira.usertype.autoRegisterUserTypes: true
+    hibernate:
+      naming-strategy: cn.tendata.bgsys.data.jpa.config.CustomNamingStrategy
+      ddl-auto: validate
+  thymeleaf:
+      enabled: true
+      cache: false
+      mode: LEGACYHTML5
+
+security:
+  ignored: /favicon.ico,css/**,/js/**,/fonts/**,/img/**,/webjars/**,/admin/app/**,/admin/assets/**,/admin/css/**,/admin/html/**,/admin/images/**
+
+multipart:
+  enabled: true
+  max-file-size: 1Mb
+  max-request-size: 10Mb
+
+link:
+  scs.root: ${scs.server.name:http://192.168.0.135:8091}
+  rcs.root: ${rcs.server.name:http://192.168.0.135:8092}
+
+login:
+  username:leo.wang
+  password:800106
+
+---
+spring:
+  profiles: cas
+cas:
+  service: ${edm.server.name:http://localhost:${server.port}}/login/cas
+  server-url-prefix: ${cas.server.name:http://192.168.0.100:8080/cas}
+  server-login-url:  ${cas.server-url-prefix}/login
+  server-logout-url:  ${cas.server-url-prefix}/logout
+  application-parameters.applicationId: 1006
+  application-parameters.hasChildUsers: true
+
+
+
+
